@@ -1,0 +1,32 @@
+{
+  "event": {
+    "name": "Dhruv",
+    "totalAmount": 3000,
+    "totalDonors": 2
+  },
+  "customFields": [
+    {
+      "id": "1761404042859",
+      "label": "Village",
+      "fieldType": "selector"
+    }
+  ],
+  "donations": [
+    {
+      "donorName": "Vivel",
+      "amount": 2000,
+      "customFields": {
+        "1761404042859": "Bhalana"
+      },
+      "date": "2025-10-25T14:54:55.676Z"
+    },
+    {
+      "donorName": "Dhruv",
+      "amount": 1000,
+      "customFields": {
+        "1761404042859": "Ekalva"
+      },
+      "date": "2025-10-25T14:54:34.249Z"
+    }
+  ]
+}
