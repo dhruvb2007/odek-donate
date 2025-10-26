@@ -278,7 +278,7 @@ export default function DonationsPage({ params }: { params: Promise<{ id: string
                               }}
                             />
                             <div className="absolute inset-4 bg-white rounded-full flex flex-col items-center justify-center">
-                              <span className="text-xs font-semibold text-gray-600">₹{(totalAmount / 1000).toFixed(0)}K</span>
+                              <span className="text-xs font-semibold text-gray-600">₹{(totalAmount / 1000).toFixed(2)}K</span>
                             </div>
                           </div>
                           

@@ -142,18 +142,17 @@ export default function DownloadPage({ params }: { params: Promise<{ id: string 
         body * {
           visibility: hidden;
         }
-        #printable-area, #printable-area * {
-          visibility: visible;
-        }
         #printable-area {
+          visibility: visible;
+          display: block !important;
           position: absolute;
           left: 0;
           top: 0;
           width: 100%;
           padding: 20px;
         }
-        .no-print {
-          display: none !important;
+        #printable-area * {
+          visibility: visible;
         }
         table {
           page-break-inside: auto;
@@ -346,13 +345,14 @@ export default function DownloadPage({ params }: { params: Promise<{ id: string 
                 <tr className="bg-gray-100">
                   <th className="border border-gray-300 px-2 py-2 text-left font-semibold">#</th>
                   <th className="border border-gray-300 px-2 py-2 text-left font-semibold">Donor Name</th>
-                  <th className="border border-gray-300 px-2 py-2 text-left font-semibold">Amount (₹)</th>
+                  
                   {customFields.map(field => (
                     <th key={field.id} className="border border-gray-300 px-2 py-2 text-left font-semibold">
                       {field.label}
                     </th>
                   ))}
                   <th className="border border-gray-300 px-2 py-2 text-left font-semibold">Date</th>
+                  <th className="border border-gray-300 px-2 py-2 text-left font-semibold">Amount (₹)</th>
                 </tr>
               </thead>
               <tbody>
@@ -360,9 +360,7 @@ export default function DownloadPage({ params }: { params: Promise<{ id: string 
                   <tr key={donation.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     <td className="border border-gray-300 px-2 py-2">{index + 1}</td>
                     <td className="border border-gray-300 px-2 py-2 font-medium">{donation.donorName}</td>
-                    <td className="border border-gray-300 px-2 py-2 font-semibold">
-                      ₹{donation.amount.toLocaleString('en-IN')}
-                    </td>
+                    
                     {customFields.map(field => (
                       <td key={field.id} className="border border-gray-300 px-2 py-2">
                         {donation.customFields?.[field.id] || '-'}
@@ -371,14 +369,16 @@ export default function DownloadPage({ params }: { params: Promise<{ id: string 
                     <td className="border border-gray-300 px-2 py-2">
                       {donation.createdAt.toLocaleDateString('en-IN')}
                     </td>
+                    <td className="border border-gray-300 px-2 py-2 font-semibold">
+                      ₹{donation.amount.toLocaleString('en-IN')}
+                    </td>
                   </tr>
                 ))}
               </tbody>
               <tfoot>
                 <tr className="bg-gray-200 font-bold">
-                  <td colSpan={2} className="border border-gray-300 px-2 py-2 text-right">Total:</td>
-                  <td className="border border-gray-300 px-2 py-2">₹{totalAmount.toLocaleString('en-IN')}</td>
-                  <td colSpan={customFields.length + 1} className="border border-gray-300 px-2 py-2"></td>
+                  <td colSpan={customFields.length + 3} className="border border-gray-300 px-2 py-2 text-right">Total:</td>
+                  <td className="border border-gray-300 px-2 py-2">₹{totalAmount.toLocaleString('en-IN')}</td>                 
                 </tr>
               </tfoot>
             </table>
